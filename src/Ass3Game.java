@@ -9,7 +9,7 @@ public class Ass3Game {
      * @param args from command line.
      */
     public static void main(String[] args) {
-        Game game = new Game();
+        GameLevel game = new GameLevel();
         game.initialize();
         game.run();
     }

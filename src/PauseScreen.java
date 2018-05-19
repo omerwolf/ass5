@@ -1,6 +1,10 @@
+import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
+
 public class PauseScreen implements Animation {
     private KeyboardSensor keyboard;
     private boolean stop;
+
     public PauseScreen(KeyboardSensor k) {
         this.keyboard = k;
         this.stop = false;

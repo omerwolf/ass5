@@ -3,10 +3,10 @@ import java.util.List;
 // a BallRemover is in charge of removing balls from the game, as well as keeping count
 // of the number of balls that remain.
 public class BallRemover implements HitListener {
-    private Game game;
+    private GameLevel game;
     private Counter remainingBalls;
 
-    public BallRemover(Game newGame, Counter newRemovedBalls) {
+    public BallRemover(GameLevel newGame, Counter newRemovedBalls) {
         this.game = newGame;
         this.remainingBalls = newRemovedBalls;
     }

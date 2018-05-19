@@ -3,10 +3,10 @@ import java.util.List;
 // a BlockRemover is in charge of removing blocks from the game, as well as keeping count
 // of the number of blocks that remain.
 public class BlockRemover implements HitListener {
-    private Game game;
+    private GameLevel game;
     private Counter remainingBlocks;
 
-    public BlockRemover(Game newGame, Counter newRemovedBlocks) {
+    public BlockRemover(GameLevel newGame, Counter newRemovedBlocks) {
         this.game = newGame;
         this.remainingBlocks = newRemovedBlocks;
     }

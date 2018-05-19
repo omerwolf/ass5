@@ -18,5 +18,5 @@ public interface Sprite {
      * add the sprite to the game.
      * @param g the game which the sprite added.
      */
-    void addToGame(Game g);
+    void addToGame(GameLevel g);
 }

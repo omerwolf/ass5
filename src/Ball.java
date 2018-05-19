@@ -108,7 +108,7 @@ public class Ball implements Sprite, HitNotifier {
      * @param g a game. add the ball to the sprite list .
      */
     @Override
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
        g.addSprite(this);
     }
 
@@ -205,7 +205,7 @@ public class Ball implements Sprite, HitNotifier {
      * @param g a game.
      * Remove the block to the sprite and collidable lists .
      */
-    public void removeFromGame(Game g){
+    public void removeFromGame(GameLevel g){
         g.removeSprite(this);
     }
 }

@@ -1,8 +1,8 @@
 public class LiveTrackingListener implements HitListener {
-    private Game game;
+    private GameLevel game;
     private Counter currentLives;
 
-    public LiveTrackingListener(Game newGame, Counter livesCounter) {
+    public LiveTrackingListener(GameLevel newGame, Counter livesCounter) {
         this.currentLives = livesCounter;
         this.game = newGame;
     }

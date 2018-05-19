@@ -13,6 +13,7 @@ public class AnimationRunner {
         this.framesPerSecond = initFramesPerSecond;
         this.sleeper = initSleeper;
     }
+
     // ...
     public void run(Animation animation) {
         int millisecondsPerFrame = 1000 / this.framesPerSecond;

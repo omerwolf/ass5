@@ -9,7 +9,7 @@ import biuoop.KeyboardSensor;
  *
  * @author Omer Wolf.
  */
-public class Game implements Animation{
+public class GameLevel implements Animation{
     static final int SCREEN_WIDTH = 800;
     static final int SCREEN_LENGTH = 600;
     static final int INIT_NUM_OF_LIVES = 2;
@@ -27,7 +27,7 @@ public class Game implements Animation{
     private KeyboardSensor keyboardSensor;
 
 
-    public Game() {
+    public GameLevel() {
         this.gui = new GUI("Arkanoid", SCREEN_WIDTH, SCREEN_LENGTH);
         this.sprites = new SpriteCollection();
         this.gameE = new GameEnvironment();
@@ -196,6 +196,7 @@ public class Game implements Animation{
     public void playOneTurn() {
 
         this.createBallsOnTopOfPaddle();
+        this.runner.run(new CountdownAnimation(2, 3, this.sprites));
         this.isRunning = true;
         this.runner.run(this);
 
@@ -296,6 +297,9 @@ public class Game implements Animation{
         if (this.remainingBalls.getValue() == 0) {
             this.isRunning = false;
             return;
+        }
+        if (this.keyboardSensor.isPressed("p") || this.keyboardSensor.isPressed("P")) {
+            this.runner.run(new PauseScreen((this.keyboardSensor)));
         }
     }
 
