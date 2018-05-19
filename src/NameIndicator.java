@@ -2,22 +2,23 @@ import biuoop.DrawSurface;
 
 import java.awt.Color;
 
-public class LivesIndicator implements Sprite {
-    private Counter livesCounter;
+public class NameIndicator implements Sprite {
+    private String levelname;
 
-    public LivesIndicator(Counter lc) {
-        this.livesCounter = lc;
+    public NameIndicator(String initLevelName) {
+        this.levelname = initLevelName;
     }
     @Override
     public void drawOn(DrawSurface d) {
         int fontSize = 20;
-        String result = "lives: " + this.livesCounter.getValue();
+        String result = "Level Name: " + this.levelname;
         d.setColor(Color.BLACK);
-        d.drawText(100, 20, result, fontSize);
+        d.drawText(600, 20, result, fontSize);
     }
 
     @Override
     public void timePassed() {
+
     }
 
     @Override

@@ -25,15 +25,17 @@ public class GameLevel implements Animation{
     private AnimationRunner runner;
     private boolean isRunning;
     private KeyboardSensor keyboardSensor;
+    private String levelName;
 
 
-    public GameLevel() {
+    public GameLevel(String initLevelName) {
         this.gui = new GUI("Arkanoid", SCREEN_WIDTH, SCREEN_LENGTH);
         this.sprites = new SpriteCollection();
         this.gameE = new GameEnvironment();
         Sleeper sleeper = new Sleeper();
         this.runner = new AnimationRunner(this.gui, 60, sleeper);
         this.keyboardSensor = this.gui.getKeyboardSensor();
+        this.levelName = initLevelName;
     }
 
     /**
@@ -102,6 +104,9 @@ public class GameLevel implements Animation{
         ///initialize lives indicator
         LivesIndicator livesIndicator = new LivesIndicator(this.remainingLives);
         livesIndicator.addToGame(this);
+
+        NameIndicator nameIndicator = new NameIndicator(this.levelName);
+        nameIndicator.addToGame(this);
     }
 
     public void initBalls() {

@@ -1,6 +1,6 @@
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class ScoreIndicator implements Sprite {
     private Counter scoreCounter;
@@ -12,7 +12,7 @@ public class ScoreIndicator implements Sprite {
     public void drawOn(DrawSurface d) {
         int fontSize = 20;
         String result = "Score: "  + this.scoreCounter.getValue();
-        d.setColor(Color.red);
+        d.setColor(Color.BLACK);
         d.drawText(300, 20, result, fontSize);
     }
 
