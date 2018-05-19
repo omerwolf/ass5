@@ -12,7 +12,7 @@ import biuoop.KeyboardSensor;
 public class Game implements Animation{
     static final int SCREEN_WIDTH = 800;
     static final int SCREEN_LENGTH = 600;
-    static final int INIT_NUM_OF_LIVES = 10;
+    static final int INIT_NUM_OF_LIVES = 2;
     static final int INIT_NUM_OF_BALLS = 4;
 
     private SpriteCollection sprites;
@@ -230,6 +230,7 @@ public class Game implements Animation{
             this.playOneTurn();
             this.remainingLives.decrease();
         }
+        this.gui.close();
         return;
     }
       /**
