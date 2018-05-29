@@ -1,10 +1,16 @@
 import biuoop.DrawSurface;
-
 import java.awt.Color;
-
+/**
+ * The ScoreIndicator class.
+ *
+ * @author Omer Wolf
+ */
 public class ScoreIndicator implements Sprite {
     private Counter scoreCounter;
-
+    /**
+     * The constructor of the ScoreIndicator.
+     * @param sc - the counter of the score.
+     */
     public ScoreIndicator(Counter sc) {
         this.scoreCounter = sc;
     }
@@ -17,7 +23,7 @@ public class ScoreIndicator implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
     }
 
     @Override

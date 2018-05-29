@@ -1,20 +1,28 @@
-import java.util.List;
-
-// a BallRemover is in charge of removing balls from the game, as well as keeping count
-// of the number of balls that remain.
+/**
+ * A BallRemover class.
+ *
+ * @author Omer Wolf
+ */
 public class BallRemover implements HitListener {
     private GameLevel game;
     private Counter remainingBalls;
-
+    /**
+     * The constructor of the Ball Remover .
+     * @param newGame -  the game.
+     * @param newRemovedBalls - the counter of the balls.
+     */
     public BallRemover(GameLevel newGame, Counter newRemovedBalls) {
         this.game = newGame;
         this.remainingBalls = newRemovedBalls;
     }
-    // Blocks that are hit and reach 0 hit-points should be removed
-    // from the game. Remember to remove this listener from the block
-    // that is being removed from the game.
+    /**
+     * this method remove from the game Balls that hit the deathRegion block.
+     * decrease the number of balls.
+     * @param beingHit the block
+     * @param hitter the ball.
+     */
     public void hitEvent(Block beingHit, Ball hitter) {
-        if (beingHit.getDeathRegion() == true) {
+        if (beingHit.getDeathRegion()) {
 
             hitter.removeHitListener(this);
             hitter.removeFromGame(game);
@@ -24,12 +32,5 @@ public class BallRemover implements HitListener {
             }
             this.remainingBalls.decrease();
         }
-    }
-    public Counter getRemainingBalls() {
-        return this.remainingBalls;
-    }
-
-    public void setRemainingBalls(Counter newRemainingBalls) {
-        this.remainingBalls = newRemainingBalls;
     }
 }

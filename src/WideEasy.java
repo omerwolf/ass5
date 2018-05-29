@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * The level 4 - WideEasy class implements LevelInformation.
+ *
+ * @author Omer Wolf.
+ */
 public class WideEasy implements LevelInformation {
     @Override
     public int numberOfBalls() {
@@ -26,7 +30,7 @@ public class WideEasy implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 2;
+        return 2 * 60;
     }
 
     @Override
@@ -55,10 +59,12 @@ public class WideEasy implements LevelInformation {
         Random rand = new Random();
         for (int j = 0; j < 2; j++) {
             for (int i = 0; i < 7; i++) {
+                //generate random color
                 float r = rand.nextFloat();
                 float g = rand.nextFloat();
                 float b = rand.nextFloat();
                 java.awt.Color randomColor = new java.awt.Color(r, g, b);
+
                 Rectangle rBlock1 = new Rectangle(new Point(20 + 50 * i + 410 * j, 300), 50, 30, randomColor);
                 Block onlyOne = new Block(rBlock1);
                 onlyOne.setHitsCount(1);

@@ -1,6 +1,10 @@
 import biuoop.DrawSurface;
 import java.awt.Color;
-
+/**
+ * A Green3 Background class.
+ *
+ * @author Omer Wolf
+ */
 public class Green3Background implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
@@ -61,7 +65,7 @@ public class Green3Background implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 

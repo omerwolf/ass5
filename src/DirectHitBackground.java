@@ -1,16 +1,19 @@
 import biuoop.DrawSurface;
-
+import java.awt.Color;
+/**
+ * A DirectHitBackground class.
+ *
+ * @author Omer Wolf
+ */
 public class DirectHitBackground implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
         d.setColor(java.awt.Color.BLACK);
         d.fillRectangle(20, 20, d.getWidth(), d.getHeight());
 
-        String string1 = "Too Good";
-        String string2 = "To Be True!";
-        d.setColor(java.awt.Color.RED);
-        d.drawText(60, 100, string1, 35);
-        d.drawText(100, 150, string2, 35);
+        String string = "Head Shot !";
+        d.setColor(Color.green);
+        d.drawText(60, 100, string, 35);
 
         d.setColor(java.awt.Color.WHITE);
         d.drawCircle(400, 150, 35);
@@ -22,7 +25,7 @@ public class DirectHitBackground implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
     }
 
     @Override

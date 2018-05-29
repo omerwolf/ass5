@@ -23,11 +23,12 @@ public class SpriteCollection {
     }
     /**
      * call timePassed() on all sprites.
+     * @param dt - absolute time.
      */
-    public void notifyAllTimePassed() {
+    public void notifyAllTimePassed(double dt) {
         LinkedList<Sprite> spriteCopy = new LinkedList<Sprite>(this.spriteList);
         for (Sprite sprite : spriteCopy) {
-            sprite.timePassed();
+            sprite.timePassed(dt);
         }
     }
     /**
@@ -46,7 +47,10 @@ public class SpriteCollection {
     public void removeSprite(Sprite s) {
         this.spriteList.remove(s);
     }
-
+    /**
+     * get it to the sprite list.
+     * @return spriteList - LinkedList of sprites.
+     */
     public LinkedList<Sprite> getSpriteList() {
         return spriteList;
     }

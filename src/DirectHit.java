@@ -1,7 +1,11 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The level 1 - DirectHit class implements LevelInformation.
+ *
+ * @author Omer Wolf
+ */
 public class DirectHit implements LevelInformation {
     @Override
     public int numberOfBalls() {
@@ -17,7 +21,7 @@ public class DirectHit implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 5;
+        return 3 * 60;
     }
 
     @Override
@@ -39,9 +43,9 @@ public class DirectHit implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List<Block> blocksList = new ArrayList<Block>();
-        Block redBlock = new Block(new Rectangle(new Point(385, 135), 30, 30, Color.RED));
-        redBlock.setHitsCount(1);
-        blocksList.add(redBlock);
+        Block block = new Block(new Rectangle(new Point(385, 135), 30, 30, Color.cyan));
+        block.setHitsCount(1);
+        blocksList.add(block);
         return blocksList;
     }
 

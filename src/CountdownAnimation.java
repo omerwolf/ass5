@@ -1,21 +1,23 @@
 import biuoop.DrawSurface;
-
-import java.awt.*;
-
-// The CountdownAnimation will display the given gameScreen,
-// for numOfSeconds seconds, and on top of them it will show
-// a countdown from countFrom back to 1, where each number will
-// appear on the screen for (numOfSeconds / countFrom) secods, before
-// it is replaced with the next one.
+import java.awt.Color;
+import biuoop.Sleeper;
+/**
+ * A CountdownAnimation class.
+ * The CountdownAnimation will display the given gameScreen,
+ *for numOfSeconds seconds, and on top of them it will show
+ *a countdown from countFrom back to 1, where each number will
+ *appear on the screen for (numOfSeconds / countFrom) seconds, before
+ *it is replaced with the next one.
+ *
+ * @author Omer Wolf.
+ */
 public class CountdownAnimation implements Animation {
     private double numOfSeconds;
     private int countFrom;
     private SpriteCollection gameScreen;
     private static long milliSecondsSlept;
-    private int countdownReverse;
-    private int guiWidth;
-    private int guiLength;
-
+    private boolean stop;
+    private boolean first;
     /**
      * A Countdown Animation constructor.
      * @param initNumOfSeconds1
@@ -29,33 +31,47 @@ public class CountdownAnimation implements Animation {
         this.numOfSeconds = initNumOfSeconds1;
         this.countFrom = initCountFrom;
         this.gameScreen = currGameScreen;
-        this.countdownReverse = 0;
-        this.guiLength = 600;
-        this.guiWidth = 800;
-
+        this.first = true;
+        this.stop = false;
     }
     /**
      * Runs one frame according to this spesific animation (Countdown).
      * @param d
      *            - Draw Surface
      */
-    public void doOneFrame(DrawSurface d) {
-        String coutdownS = (this.countFrom != 0 ? Integer.toString(this.countFrom) : "GO!");
-        ///init backdround
-        Rectangle backGround = new Rectangle(new Point(0, 0), guiWidth, guiLength);
-        backGround.setColor(Color.blue);
-        backGround.drawOn(d);
+    public void doOneFrame(DrawSurface d, double dt) {
+
         this.gameScreen.drawAllOn(d);
-        d.setColor(Color.red);
-        d.drawText(d.getWidth() / 2, d.getHeight() / 2, coutdownS, 64);
-        milliSecondsSlept += (1000 / 60);
-        if (milliSecondsSlept > (this.numOfSeconds * 1000 / (this.countFrom + this.countdownReverse))) {
-            milliSecondsSlept = 0;
-            this.countdownReverse++;
-            this.countFrom--;
+
+        d.setColor(Color.WHITE);
+        d.fillCircle(400, 285, 30);
+        d.setColor(Color.black);
+        d.drawCircle(400, 285, 30);
+        d.setColor(Color.black);
+        d.drawCircle(400, 285, 29);
+
+        d.setColor(Color.RED);
+        String ready = "Ready?";
+        d.drawText(600, 100, ready, 50);
+
+
+        d.setColor(Color.RED);
+        String countDown = "!" + this.countFrom + "";
+        d.drawText(382, 300, countDown, 50);
+
+        if (this.first) {
+            this.first = false;
+        } else {
+            Sleeper sleeper3 = new biuoop.Sleeper();
+            sleeper3.sleepFor((long) 3 / (long) (this.numOfSeconds) * 1000);
         }
+        if (this.countFrom == 0) {
+            this.stop = true;
+        }
+        this.countFrom--;
+
     }
-    /**
+    /**.
      * Returns wheater the animation should stop
      * @return True if it's should stop. False otherwise.
      */

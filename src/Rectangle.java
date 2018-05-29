@@ -1,10 +1,4 @@
-/**
- * Rectangle class.
- *
- * @author Omer Wolf.
- */
 import biuoop.DrawSurface;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +82,15 @@ class Rectangle {
      */
     public Point getUpperLeft() {
         return this.location;
+    }
+    /**
+     * @return the upper-getUpperRigth point of the rectangle.
+     */
+    public Point getUpperRigth() {
+        double newX = this.location.getX() + this.width;
+        double newY = this.location.getY();
+        Point newP = new Point(newX, newY);
+        return newP;
     }
     /**
      * @return the upper line of the rectangle.

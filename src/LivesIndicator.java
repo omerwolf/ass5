@@ -1,10 +1,16 @@
 import biuoop.DrawSurface;
-
 import java.awt.Color;
-
+/**
+ * The LiveIndicator class.
+ *
+ * @author Omer Wolf
+ */
 public class LivesIndicator implements Sprite {
     private Counter livesCounter;
-
+    /**
+     * The constructor of the NLiveIndicator.
+     * @param lc - the counter of the lives.
+     */
     public LivesIndicator(Counter lc) {
         this.livesCounter = lc;
     }
@@ -17,7 +23,7 @@ public class LivesIndicator implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
     }
 
     @Override

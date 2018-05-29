@@ -73,7 +73,9 @@ public class GameEnvironment {
     public void removeCollidable(Collidable c) {
         collList.remove(c);
     }
-
+    /**
+     * @return the list of collidable.
+     */
     public LinkedList<Collidable> getCollList() {
         return collList;
     }

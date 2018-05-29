@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
 import biuoop.DrawSurface;
 /**
  * Ball class.
@@ -15,7 +14,6 @@ public class Ball implements Sprite, HitNotifier {
     private Velocity velocity;
     private GameEnvironment ballGE;
     private List<HitListener> hitListeners;
-
     /**
      * constructor create a ball by given the center point, the radius and the
      * color.
@@ -51,10 +49,14 @@ public class Ball implements Sprite, HitNotifier {
     /**
      *this method cause the ball to move one step, but make sure it's not go
      * out of the screen.
+     * @param dt - absolute time.
      **/
-    public void moveOneStep() {
+    public void moveOneStep(double dt) {
         double epsilon = 0.001;
-        Point endTajectory = this.getVelocity().applyToPoint(this.location);
+        Velocity dtVel = new Velocity(this.velocity.getDx() * dt, this.velocity.getDy() * dt);
+        //Point endTajectory = this.getVelocity().applyToPoint(this.location);
+        Point endTajectory = new Point(this.getVelocity().applyToPoint(this.location).getX() + dtVel.getDx(),
+            this.getVelocity().applyToPoint(this.location).getY() + dtVel.getDy());
         Line trajectory = new Line(this.location, endTajectory);
         CollisionInfo collInfo = this.ballGE.getClosestCollision(trajectory);
         //No collision case.
@@ -65,9 +67,13 @@ public class Ball implements Sprite, HitNotifier {
             double dy = this.velocity.getDy();
             Collidable collObj = collInfo.collisionObject();
             Point collPoint = collInfo.collisionPoint();
-            this.setLocation(collPoint.getX() - (dx / (Math.abs(dx) + epsilon) * epsilon),
+
+            Point newLocation = new Point(collPoint.getX() - (dx / (Math.abs(dx) + epsilon) * epsilon),
                     collPoint.getY() - (dy / (Math.abs(dy) + epsilon) * epsilon));
-            this.setVelocity(collObj.hit(this, collPoint, this.velocity));
+            this.location = newLocation;
+
+            Velocity newV = collObj.hit(this, collPoint, this.velocity);
+            this.velocity = newV;
 
             if (collObj instanceof Paddle) {
                 double upperXOfPaddle = collObj.getCollisionRectangle().getUpperLeft().getX();
@@ -78,8 +84,9 @@ public class Ball implements Sprite, HitNotifier {
                         && this.location.getX() <= upperXOfPaddle + widthOfPaddle
                         && this.location.getY() >= upperYOfPaddle
                         && this.location.getY() <= upperYOfPaddle + heightOfPaddle) {
-                    this.location = new Point(350, 350);
+                    this.location = new Point(800, 600); //screen end point
                 }
+
             }
             }
         }
@@ -99,10 +106,11 @@ public class Ball implements Sprite, HitNotifier {
     }
     /**.
      * this method is Sprite interface method that call all of the Sprites to move.
+     * @param dt - absolute time.
      */
     @Override
-    public void timePassed() {
-        this.moveOneStep();
+    public void timePassed(double dt) {
+        this.moveOneStep(dt);
     }
     /**
      * @param g a game. add the ball to the sprite list .
@@ -205,7 +213,7 @@ public class Ball implements Sprite, HitNotifier {
      * @param g a game.
      * Remove the block to the sprite and collidable lists .
      */
-    public void removeFromGame(GameLevel g){
+    public void removeFromGame(GameLevel g) {
         g.removeSprite(this);
     }
 }

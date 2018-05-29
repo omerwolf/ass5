@@ -10,35 +10,43 @@ public class Paddle implements Sprite, Collidable {
     private Rectangle shape;
     private KeyboardSensor keyboard;
     private int speed;
+    private int screenWidth;
     /**
      *create a new paddle.
      *@param rect - the shape of the paddle(with upperleft point width and height).
      *@param keyboardS - the keyboard.
+     *@param initSpeed - the initialize speed.
+     *@param guiWidth - the gui width.
      */
-    public Paddle(Rectangle rect, KeyboardSensor keyboardS) {
+    public Paddle(Rectangle rect, KeyboardSensor keyboardS, int initSpeed, int guiWidth) {
         this.shape = rect;
         this.keyboard = keyboardS;
-        this.speed = 10;
+        this.speed = initSpeed;
+        this.screenWidth = guiWidth;
     }
     /**
      * move the paddle left.
+     * @param dt - absolute time.
      */
-    public void moveLeft() {
+    public void moveLeft(double dt) {
         int limit = 25;    //Screen start point + size of the left border
-        if (this.shape.getUpperLeft().getX() >= limit) {
-            Point location = shape.getUpperLeft();
-            Point newLocation = new Point(location.getX() - speed, location.getY());
-            this.shape.setLocation(newLocation);
+        Point upperLeft = shape.getUpperLeft();
+        Point upperLeftPoint = new Point(upperLeft.getX() - speed * dt, upperLeft.getY());
+        if (upperLeftPoint.getX()  >= limit) {
+            this.shape.setLocation(upperLeftPoint);
         }
     }
     /**
      * move the paddle right.
+     * @param dt - absolute time.
      */
-    public void moveRight() {
-        int limit = 800 - 25 - 200;    //Screen end point - size of the right border - paddel width
-        if (this.shape.getUpperLeft().getX() <= limit) {
-            Point location = shape.getUpperLeft();
-            Point newLocation = new Point(location.getX() + speed, location.getY());
+    public void moveRight(double dt) {
+        int limit = screenWidth - 25; //Screen end point - size of the right border
+        Point upperRight = shape.getUpperRigth();
+        Point upperLeft = shape.getUpperLeft();
+        Point upperRightPoint = new Point(upperRight.getX() + speed * dt, upperRight.getY());
+        if (upperRightPoint.getX() <= limit) {
+            Point newLocation = new Point(upperLeft.getX() + speed * dt, upperLeft.getY());
             this.shape.setLocation(newLocation);
         }
     }
@@ -46,12 +54,12 @@ public class Paddle implements Sprite, Collidable {
     /**implements Sprite
      *  this method call all of the Sprites to move.
      */
-    public void timePassed() {
+    public void timePassed(double dt) {
         if (keyboard.isPressed(KeyboardSensor.LEFT_KEY)) {
-            this.moveLeft();
+            this.moveLeft(dt);
         }
         if (keyboard.isPressed(KeyboardSensor.RIGHT_KEY)) {
-            this.moveRight();
+            this.moveRight(dt);
         }
     }
     /** implements Sprite.

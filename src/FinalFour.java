@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
-
+/**
+ * The level4 - FinalFour class implements LevelInformation.
+ *
+ * @author Omer Wolf
+ */
 public class FinalFour implements LevelInformation {
     @Override
     public int numberOfBalls() {
@@ -26,7 +30,7 @@ public class FinalFour implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 10;
+        return 5 * 60;
     }
 
     @Override

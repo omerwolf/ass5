@@ -1,7 +1,10 @@
 import biuoop.DrawSurface;
-
 import java.awt.Color;
-
+/**
+ * A WideEasyBackground class.
+ *
+ * @author Omer Wolf
+ */
 public class WideEasyBackground implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
@@ -25,7 +28,7 @@ public class WideEasyBackground implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 

@@ -156,21 +156,6 @@ public class Line {
      * if there is no intersection point, return null.
      */
     public Point closestIntersectionToStartOfLine(Rectangle rect) {
-        /*
-        List<Point> pointList = new ArrayList<Point>();
-        pointList = rect.intersectionPoints(this);
-        if (pointList.isEmpty()) {
-            return null;
-        }
-        Point closestPoint = pointList.get(0);
-        double distance = this.start().distance(pointList.get(0));
-        for (int i = 1; i < pointList.size(); i++) {
-            if (this.start().distance(pointList.get(i)) < distance) {
-                closestPoint = pointList.get(i);
-            }
-        }
-        return closestPoint;
-        */
         List<Point> listI = rect.intersectionPoints(this);
         if (listI.isEmpty()) {
             return null;

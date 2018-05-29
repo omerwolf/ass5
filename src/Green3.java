@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
-
+/**
+ * The level3 - Green3 class implements LevelInformation.
+ *
+ * @author Omer Wolf.
+ */
 public class Green3 implements LevelInformation {
     @Override
     public int numberOfBalls() {
@@ -20,7 +24,7 @@ public class Green3 implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 10;
+        return 4 * 60;
     }
 
     @Override

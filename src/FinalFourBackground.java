@@ -1,6 +1,10 @@
 import biuoop.DrawSurface;
 import java.awt.Color;
-
+/**
+ * A FinalFourBackground class.
+ *
+ * @author Omer Wolf
+ */
 public class FinalFourBackground implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
@@ -50,7 +54,7 @@ public class FinalFourBackground implements Sprite {
     }
 
     @Override
-    public void timePassed() {
+    public void timePassed(double dt) {
 
     }
 

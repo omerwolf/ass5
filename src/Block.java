@@ -2,7 +2,6 @@ import biuoop.DrawSurface;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * A Block class.
  *
@@ -80,21 +79,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
         drawS.setColor(Color.WHITE);
         drawS.drawText(midX, midY, hitsNum, sizeOfText);
     }
-    /**
-     * a sprite interface method.
-     */
-    @Override
-    public void timePassed() {
 
-    }
-    /**
-     * @param g a game. add the block to the sprite and collidable lists .
-     */
-    @Override
-    public void addToGame(GameLevel g) {
-        g.addSprite(this);
-        g.addCollidable(this);
-    }
     /**
      * Decrease the hit number by 1.
      */
@@ -112,11 +97,14 @@ public class Block implements Collidable, Sprite, HitNotifier {
      * @param g a game.
      * Remove the block to the sprite and collidable lists .
      */
-    public void removeFromGame(GameLevel g){
+    public void removeFromGame(GameLevel g) {
         g.removeCollidable(this);
         g.removeSprite(this);
     }
-
+    /**.
+     * this method get the hit number of the block
+     * @return  hitsCount - the current hit number.
+     */
     public int getHitsCount() {
         return this.hitsCount;
     }
@@ -131,6 +119,11 @@ public class Block implements Collidable, Sprite, HitNotifier {
     public void removeHitListener(HitListener hl) {
         this.hitListeners.remove(hl);
     }
+    /**
+     * Notifies all listeners that a hit occured.
+     * @param hitter
+     *            - The ball which hits this block.
+     */
     public void notifyHit(Ball hitter) {
         // Make a copy of the hitListeners before iterating over them.
         List<HitListener> listeners = new ArrayList<HitListener>(this.hitListeners);
@@ -139,15 +132,32 @@ public class Block implements Collidable, Sprite, HitNotifier {
             hl.hitEvent(this, hitter);
         }
     }
+    /**
+     * a sprite interface method.
+     */
+    @Override
+    public void timePassed(double dt) {
 
-    public List<HitListener> getHitListeners() {
-        return this.hitListeners;
     }
-
+    /**
+     * @param g a game. add the block to the sprite and collidable lists .
+     */
+    @Override
+    public void addToGame(GameLevel g) {
+        g.addSprite(this);
+        g.addCollidable(this);
+    }
+    /**.
+     * this method get death-region flag.
+     * @return  isDeathRegion - the death-region flag.
+     */
     public Boolean getDeathRegion() {
         return this.isDeathRegion;
     }
-
+    /**.
+     * this method set death-region flag.
+     * @param  newDeathRegion - the new  death-region flag value.
+     */
     public void setDeathRegion(Boolean newDeathRegion) {
         this.isDeathRegion = newDeathRegion;
     }
