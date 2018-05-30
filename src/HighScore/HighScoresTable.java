@@ -12,9 +12,6 @@ import java.util.ArrayList;
 public class HighScoresTable implements Serializable {
     private int tableSize;
     private List<ScoreInfo> HST;
-    public byte version = 1;
-    public byte count = 0;
-
 
     /**
      * Create an empty high-scores table with the specified size.
@@ -24,7 +21,7 @@ public class HighScoresTable implements Serializable {
      */
     public HighScoresTable(int size) {
         this.tableSize = size;
-        this.HST = new ArrayList<ScoreInfo>(this.tableSize + 1);
+        this.HST = new ArrayList<ScoreInfo>();
     }
 
     /**
@@ -53,25 +50,11 @@ public class HighScoresTable implements Serializable {
             this.HST.remove(tableSize);
         }
     }
-    /*
-    public void sort() {
-        ScoreInfoComparator comparator = new ScoreInfoComparator();
-        //case HST.2.score < HST.3.score
-        if (comparator.compare(this.HST.get(2), this.HST.get(3)) == 1) {
-            Collections.swap(this.HST, 2, 3); //Swap the 3rd and the 4th places
-            this.HST.remove(3);
-            //case HST.1.score < HST.2.score
-            if (comparator.compare(this.HST.get(1), this.HST.get(2)) == 1) {
-                Collections.swap(this.HST, 2, 3); //Swap the 3rd and the 4th places
-            }
-        }
-    }*/
-
     /**
      * @return table size.
      */
     public int size() {
-        return this.tableSize;
+       return this.tableSize;
     }
 
     /**
@@ -97,7 +80,7 @@ public class HighScoresTable implements Serializable {
             return 1;
         }
         int i;
-        for (i = 0; i < this.tableSize; i++) {
+        for (i = 0; i < this.HST.size(); i++) {
             if (this.HST.get(i).getScore() < score) {
                 return i + 1;
             }

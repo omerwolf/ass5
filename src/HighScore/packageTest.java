@@ -9,7 +9,9 @@ public class packageTest {
      * @param args arguments.
      */
     public static void main(String[] args) {
+
         HighScoresTable table = new HighScoresTable(3);
+        /*
         ScoreInfo scoreInfo1 = new ScoreInfo("gal", 2);
         ScoreInfo scoreInfo2 = new ScoreInfo("yoav", 4);
         ScoreInfo scoreInfo3 = new ScoreInfo("thor", 5);
@@ -30,23 +32,24 @@ public class packageTest {
          */
         //System.out.println(table.getRank(5));
         File f = new File("scores.txt");
+        /*
         try {
             table.save(f);
         } catch (Exception e) {
         }
-
+*/
         //HighScoresTable s = null;
         List l = null;
         try {
             table.load(f);
             //s = table.getHighScores();
             //s = HighScoresTable.loadFromFile(f);
-            l = s.getHighScores();
+            l = table.getHighScores();
         } catch (Exception e) {
 
         }
         System.out.print("Top scores:\n");
-        for (int i = 0; i < s.size(); i++) {
+        for (int i = 0; i < table.size(); i++) {
             System.out.print(((ScoreInfo) l.get(i)).getName() + " holds the score of: ");
             System.out.println(((ScoreInfo) l.get(i)).getScore());
         }
