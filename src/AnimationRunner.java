@@ -24,7 +24,7 @@ public class AnimationRunner {
      * @param animation - the animation.
      */
     public void run(Animation animation) {
-        double dt = (double) 1 / 10;
+        double dt = (double) 1 / 60;
         int millisecondsPerFrame = 1000 / this.framesPerSecond;
         while (!animation.shouldStop()) {
             long startTime = System.currentTimeMillis(); // timing
