@@ -1,7 +1,40 @@
+package game;
+
 import biuoop.DrawSurface;
 import java.awt.Color;
 import java.util.List;
 import biuoop.KeyboardSensor;
+
+
+
+import animation.Animation;
+import animation.CountdownAnimation;
+import animation.PauseScreen;
+import sprites.SpriteCollection;
+import accessories.Velocity;
+import accessories.Ball;
+import accessories.Block;
+import accessories.Paddle;
+import game.GameLevel;
+import sprites.Sprite;
+import listeners.HitListener;
+import listeners.HitNotifier;
+import listeners.BallRemover;
+import listeners.BlockRemover;
+import listeners.ScoreTrackingListener;
+import listeners.PrintingHitListener;
+import geometry.Point;
+import geometry.Line;
+import geometry.Rectangle;
+import collidables.GameEnvironment;
+import collidables.CollisionInfo;
+import collidables.Collidable;
+import indicators.Counter;
+import indicators.LivesIndicator;
+import indicators.ScoreIndicator;
+import indicators.NameIndicator;
+import levels.LevelInformation;
+import animation.EndScreen;
 /**
  * A game class.
  *

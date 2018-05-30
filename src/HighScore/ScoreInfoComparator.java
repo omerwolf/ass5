@@ -1,4 +1,4 @@
-package HighScore;
+package highScore;
 
 import java.util.Comparator;
 

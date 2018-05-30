@@ -1,4 +1,4 @@
-package HighScore;
+package highScore;
 
 import java.io.File;
 import java.util.List;
@@ -45,7 +45,7 @@ public class packageTest {
         } catch (Exception e) {
 
         }
-        System.out.print("\nTop scores:\n");
+        System.out.print("Top scores:\n");
         for (int i = 0; i < s.size(); i++) {
             System.out.print(((ScoreInfo) l.get(i)).getName() + " holds the score of: ");
             System.out.println(((ScoreInfo) l.get(i)).getScore());

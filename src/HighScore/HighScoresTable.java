@@ -1,4 +1,4 @@
-package HighScore;
+package highScore;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
