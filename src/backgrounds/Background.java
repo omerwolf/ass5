@@ -4,7 +4,7 @@ import biuoop.DrawSurface;
 import game.GameLevel;
 import sprites.Sprite;
 
-public class Background implements Sprite {
+public abstract class Background implements Sprite {
 
     @Override
     public void timePassed(double dt) {
