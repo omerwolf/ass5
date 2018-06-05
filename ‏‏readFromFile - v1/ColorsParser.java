@@ -3,7 +3,6 @@ package readFromFile;
 
 import java.awt.Color;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * A ColorsParser class.
@@ -31,13 +30,13 @@ public class ColorsParser {
 
             //Split the numbers from string and create new color.
             String[] colors = s.substring(10, s.length() - 2).split(",");
-            int r = Integer.parseInt(colors[0]);
-            int g = Integer.parseInt(colors[1]);
-            int b = Integer.parseInt(colors[2]);
-            color = new Color(r, g, b);
+            int x = Integer.parseInt(colors[0]);
+            int y = Integer.parseInt(colors[1]);
+            int z = Integer.parseInt(colors[2]);
+            color = new Color(x, y, z);
         } else {
             s = (s.substring(6, s.length() - 1)).toLowerCase();
-            List<String> colorsByString = Arrays.asList("black", "gray", "cyan", "lightgray", "blue",
+            java.util.List<String> colorsByString = Arrays.asList("black", "gray", "cyan", "lightgray", "blue",
                     "orange", "green",
                     "red", "white", "yellow", "pink");
             //Colors list of valid colors respectively to colorsByString in index.
